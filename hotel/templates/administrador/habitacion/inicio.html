@@ -1,0 +1,25 @@
+{% extends 'administrador/habitacion/base.html' %}
+<!---->
+{% load crispy_forms_tags %}
+<!---->
+{% block contenedor %}
+<div class="container">
+  <h2 class="section-title">Habitaciones</h2>
+  <div class="row">
+    <div class="col-9">{% include 'administrador/search.html' %}</div>
+    <div class="col-3">
+      {% if perms.hotel_app.add_habitacion %}
+      <a class="btn" href="{% url 'habitacion_admin_agregar' hotel.id %}">
+        <i class="fas fa-plus"></i> Nueva Habitacion
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="row mtop16">
+    <div class="col-3">{% include 'administrador/hotel/hotel.html' %}</div>
+    <div class="col-9">
+      {% include 'administrador/habitacion/listar.html' %}
+    </div>
+  </div>
+</div>
+{% endblock contenedor %}

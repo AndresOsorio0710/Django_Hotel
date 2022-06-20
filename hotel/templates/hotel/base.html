@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}{% endblock titulo %}</title>
+</head>
+<body>
+    <header>
+        {% include 'hotel/barra_nabegacion.html' %}
+    </header>
+    {% block contenedor %}{% endblock contenedor %}
+</body>
+</html>

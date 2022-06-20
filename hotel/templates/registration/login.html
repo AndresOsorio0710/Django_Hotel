@@ -1,0 +1,16 @@
+{% extends 'hotel/base.html' %}
+<!---->
+{% load crispy_forms_tags %}
+<!---->
+{% block titulo %}Iniciar secion{% endblock titulo %}
+<!---->
+{% block contenedor %}
+<h2>Ingrese sus credenciales</h2>
+<form method="POST">
+    {% csrf_token %} 
+    {{ form | crispy }}
+    <button type="submit" title="Iniciar secion">
+        Ingresar
+    </button>
+</form>
+{% endblock contenedor %}

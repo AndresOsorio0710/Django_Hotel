@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/932dd1f875.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>{% block titulo %}{% endblock titulo %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index-admin.css' %}" />
+  </head>
+  <body>
+    <header>{% include 'administrador/barra_nabegacion.html' %}</header>
+    {% if messages %} {% for message in messages %}
+    <section class="notification" style="animation-duration: 5s">
+      {% if message.level == 25 %}
+      <div class="success">{{ message }}</div>
+      {% endif %}{% if message.level == 30 %}
+      <div class="warning">{{ message }}</div>
+      {% endif %} {% if message.level == 40 %}
+      <div class="danger">{{ message }}</div>
+      {% endif %}
+    </section>
+    {% endfor %} {% endif %}
+    <section class="full-container-center">
+      {% block contenedor %} {% endblock contenedor %}
+    </section>
+    {% block js %} {% endblock js %}
+  </body>
+</html>

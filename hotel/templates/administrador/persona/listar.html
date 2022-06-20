@@ -1,0 +1,52 @@
+<table class="mtop16">
+  <thead>
+    <tr>
+      <th class="text-left">RUt o DNI</th>
+      <th class="text-left">Nombre</th>
+      <th class="text-left">Pais</th>
+      <th class="text-left">Teléfono</th>
+      <th class="text-left">Correo</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for persona in lista %}
+    <tr>
+      <td class="text-center">
+        <a
+          href="{% url 'persona_admin_modificar' persona.id %}"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Ver Persona"
+          >{{ persona.rut }}</a
+        >
+      </td>
+      <td>{{ persona }}</td>
+      <td>{{ persona.pais }}</td>
+      <td>{{ persona.telefono }}</td>
+      <td>{{ persona.correo }}</td>
+      <td>
+        <div class="t-opts">
+          <a
+            href="{% url 'persona_admin_modificar' persona.id %}"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Modificar Persona"
+          >
+            <i class="fas fa-edit"></i>
+          </a>
+          <a
+            href="{% url 'persona_admin_eliminar' persona.id %}"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Eliminar Persona"
+          >
+            <i class="fas fa-trash"> </i>
+          </a>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% include 'administrador/paginator.html' %}

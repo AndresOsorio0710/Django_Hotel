@@ -1,0 +1,54 @@
+<table class="mtop16">
+  <thead>
+    <tr>
+      <th class="text-left">Nombre</th>
+      <th class="text-left">Ciudad</th>
+      <th class="text-left">Dirección</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for hotel in lista %}
+    <tr>
+      <td>
+        <a
+          calss="text-left"
+          href="{% url 'hotel_admin_modificar' hotel.id %}"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Ver Hotel"
+          >{{ hotel }}</a
+        >
+      </td>
+      <td>{{ hotel.ciudad }}</td>
+      <td>{{ hotel.direccion }}</td>
+      <td>
+        <div class="t-opts">
+          <a
+            href="{% url 'habitacion_admin_inicio' hotel.id %}"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Habitaciones del Hotel"
+            ><i class="fab fa-buromobelexperte"></i
+          ></a>
+          <a
+            href="{% url 'hotel_admin_modificar' hotel.id %}"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Modificar Hotel"
+            ><i class="fas fa-edit"></i
+          ></a>
+          <a
+            href="{% url 'hotel_admin_eliminar' hotel.id %}"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Eliminar Hotel"
+            ><i class="fas fa-trash"></i
+          ></a>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% include 'administrador/paginator.html' %}

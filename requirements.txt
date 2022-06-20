@@ -1,0 +1,10 @@
+django
+django-admin-interface
+django-ckeditor
+django-crispy-forms
+django-import-export
+django-paranoid
+django-rest-framework
+pillow
+pytest-django
+faker

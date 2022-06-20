@@ -1,0 +1,20 @@
+{% extends 'administrador/persona/base.html' %}
+<!---->
+{% load crispy_forms_tags %}
+<!---->
+{% block contenedor %}
+<div class="container">
+  <h2 class="section-title">Personas</h2>
+  <div class="row">
+    <div class="col-9">{% include 'administrador/search.html' %}</div>
+    <div class="col-3">
+      {% if perms.hotel_app.add_persona %}
+      <a class="btn" href="{% url 'persona_admin_agregar' %}">
+        <i class="fas fa-plus"></i> Nueva persona
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  {% include 'administrador/persona/listar.html' %}
+</div>
+{% endblock contenedor %}

@@ -1,0 +1,72 @@
+{% load static %}
+<nav class="nav-menu">
+  <section class="mobile">
+    <section class="header">
+      <div class="logo">
+        <a href="{% url 'administrador_inicio' %}"><h1>HOTEL</h1></a>
+      </div>
+      <div class="more">
+        <button class="menu-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M4 6H20V8H4zM4 11H20V13H4zM4 16H20V18H4z" />
+          </svg>
+        </button>
+      </div>
+    </section>
+    <section class="links">
+      {% if perms.hotel_app.view_hotel %}<a
+        href="{% url 'hotel_admin_inicio' %}"
+        >Hoteles</a
+      >
+      {% endif %} {% if perms.hotel_app.add_persona %}<a
+        href="{% url 'persona_admin_inicio' %}"
+        >Persona</a
+      >
+      {% endif %}
+      <a href="{% url 'logout' %}">Salir</a>
+      <a href="{% url 'hotel_inicio' %}">Ir al Sitio</a>
+    </section>
+  </section>
+  <section class="desktop">
+    <section class="logo">
+      <a href="{% url 'administrador_inicio' %}"><h1>HOTEL</h1></a>
+    </section>
+    <section class="primary">
+      {% if perms.hotel_app.view_hotel %}<a
+        href="{% url 'hotel_admin_inicio' %}"
+        >Hoteles</a
+      >
+      {% endif %} {% if perms.hotel_app.add_persona %}<a
+        href="{% url 'persona_admin_inicio' %}"
+        >Persona</a
+      >
+      {% endif %}
+    </section>
+    <section class="secondary full">
+      <a href="{% url 'logout' %}">Cerrar secion</a>
+      <a href="{% url 'hotel_inicio' %}">Ir al Sitio</a>
+    </section>
+    <section class="secondary mini">
+      <a href="#">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M4 6H20V8H4zM4 11H20V13H4zM4 16H20V18H4z" />
+        </svg>
+      </a>
+      <section class="submenu">
+        <a href="{% url 'logout' %}">Cerrar secion</a>
+        <a href="{% url 'hotel_inicio' %}">Ir al Sitio</a>
+      </section>
+    </section>
+  </section>
+</nav>
+<script src="{% static 'js/menu-btn.js' %}"></script>

@@ -1,0 +1,20 @@
+{% extends 'administrador/hotel/base.html' %}
+<!---->
+{% load crispy_forms_tags %}
+<!---->
+{% block contenedor %}
+<div class="container">
+  <h2 class="section-title">Hoteles</h2>
+  <div class="row">
+    <div class="col-9">{% include 'administrador/search.html' %}</div>
+    <div class="col-3">
+      {% if perms.hotel_app.add_hotel %}
+      <a class="btn" href="{% url 'hotel_admin_agregar' %}"
+        ><i class="fas fa-plus"></i> Nuevo Hotel</a
+      >
+      {% endif %}
+    </div>
+  </div>
+  {% include 'administrador/hotel/listar.html' %}
+</div>
+{% endblock contenedor %}

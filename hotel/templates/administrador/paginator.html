@@ -1,0 +1,104 @@
+{% if paginator.num_pages > 1 %}
+<section class="paginator">
+  {% if lista.has_previous %}
+  <a
+    href="?page={{ lista.previous_page_number }}"
+    data-toggle="tooltip"
+    data-placement="top"
+    title="Página anterior"
+    ><i class="fas fa-chevron-left"></i
+  ></a>
+  {% endif %}
+  <!---->
+  {% for page in paginator.page_range %}
+    {% if forloop.last and page != lista.number and paginator.num_pages > 7 %}
+      {% if lista.next_page_number != paginator.num_pages %}
+        <a 
+          class="page"
+          href="?page={{ lista.number | add:1 }}"
+          data-toggle="tooltip"
+          data-placement="top"
+          title=""
+        >
+          ...
+        </a>
+      {% endif %}
+      <a 
+        class="page" 
+        href="?page={{ page }}"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Ir a la Páhina # {{ page }}"
+      >
+        {{ page }}
+      </a>
+    {% endif %}
+    {% if paginator.num_pages > 7 %}
+      {% if lista.number < 7%}
+        {% if page < 7%}
+          <a 
+            class="page" 
+            href="?page={{ page }}"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Ir a la Páhina # {{ page }}"
+          >
+            {{ page }}
+          </a>
+        {% endif %}
+      {% else %}
+        {% if page == 1 %}
+          <a 
+            class="page" 
+            href="?page={{ page }}"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Ir a la Páhina # {{ page }}"
+          >
+            {{ page }}
+          </a>
+          <a 
+            class="page"
+            href="?page={{ lista.number | add:-1 }}"
+            data-toggle="tooltip"
+            data-placement="top"
+            title=""
+          >
+            ...
+          </a>
+        {% endif %}
+        {% if page > pl and page <= lista.number %}
+          <a 
+            class="page" 
+            href="?page={{ page }}"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Ir a la Páhina # {{ page }}"
+          >
+            {{ page }}
+          </a>
+        {% endif %}          
+      {% endif %}
+    {% else %}
+      <a 
+        class="page" 
+        href="?page={{ page }}"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Ir a la Páhina # {{ page }}"
+      >
+        {{ page }}
+      </a>
+    {% endif %}  
+  {% endfor %}
+  {% if lista.has_next %}
+  <a
+    href="?page={{ lista.next_page_number }}"
+    data-toggle="tooltip"
+    data-placement="top"
+    title="Siguiente Página"
+    ><i class="fas fa-chevron-right"></i
+  ></a>
+</section>
+{% endif %}
+{% endif %}

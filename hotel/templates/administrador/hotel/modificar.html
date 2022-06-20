@@ -1,0 +1,18 @@
+{% extends 'administrador/hotel/base.html' %}
+<!---->
+{% load crispy_forms_tags %}
+<!---->
+{% block contenedor %}
+<div class="container">
+  <h2 class="section-title">Modificar Hotel</h2>
+  <form method="POST" class="form card box-shadow-1">
+    {% csrf_token %} {{ form | crispy }}
+    <input
+      type="submit"
+      class="btn"
+      value="Agregar"
+      title="Agregar nuevo Hotel"
+    />
+  </form>
+</div>
+{% endblock contenedor %}
